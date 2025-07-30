@@ -1,0 +1,28 @@
+{
+  "name": "github-codebeamer-integration",
+  "version": "1.0.0",
+  "description": "GitHub Action to integrate Gherkin feature files with Codebeamer requirements",
+  "main": ".github/scripts/codebeamer-integration.js",
+  "scripts": {
+    "test": "node .github/scripts/test-integration.js",
+    "start": "node .github/scripts/codebeamer-integration.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "axios": "^1.6.2",
+    "glob": "^10.3.10"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "keywords": [
+    "github-action",
+    "codebeamer",
+    "gherkin",
+    "bdd",
+    "requirements",
+    "integration"
+  ],
+  "author": "GitHub Codebeamer Integration",
+  "license": "MIT"
+} 

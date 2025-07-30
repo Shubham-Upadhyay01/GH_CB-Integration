@@ -1,0 +1,41 @@
+name: Codebeamer Integration
+
+on:
+  pull_request_review:
+    types: [submitted]
+  pull_request:
+    types: [closed]
+
+jobs:
+  integrate-with-codebeamer:
+    if: |
+      (github.event.review.state == 'approved') || 
+      (github.event.action == 'closed' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install @octokit/rest axios glob
+
+      - name: Run Codebeamer Integration
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CODEBEAMER_API_URL: ${{ secrets.CODEBEAMER_API_URL }}
+          CODEBEAMER_USERNAME: ${{ secrets.CODEBEAMER_USERNAME }}
+          CODEBEAMER_PASSWORD: ${{ secrets.CODEBEAMER_PASSWORD }}
+          CODEBEAMER_PROJECT_ID: ${{ secrets.CODEBEAMER_PROJECT_ID }}
+          CODEBEAMER_TRACKER_ID: ${{ secrets.CODEBEAMER_TRACKER_ID }}
+        run: |
+          node .github/scripts/codebeamer-integration.js 
