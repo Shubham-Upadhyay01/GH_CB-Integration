@@ -23,7 +23,7 @@ Add the following secrets to your GitHub repository (`Settings > Secrets and var
 | `CODEBEAMER_USERNAME` | API username | `Shubham.Upadhyay` |
 | `CODEBEAMER_PASSWORD` | API password | `cbpass` |
 | `CODEBEAMER_PROJECT_ID` | Target project ID | `6` |
-| `CODEBEAMER_TRACKER_ID` | Product Requirements tracker ID | `20536` |
+| `CODEBEAMER_TRACKER_ID` | Product Requirements tracker ID | `19470` |
 
 ### 2. Feature File Format
 
